@@ -1,0 +1,17 @@
+<%- include('layout'); -%>
+<h1>Author: <% author.name %></h1>
+<h4>Books</h4>
+<% if (author_books.length > 0) { %>
+    <ul>
+        <% author_books.forEach(book => { %>
+            <li>
+                <p><a href="<%= book.url %>"><%= book.title %></a></p>
+                <p><%= book.summary %></p>
+            </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p>This author has no books.</p>
+<% } %>
+</body>
+</html>

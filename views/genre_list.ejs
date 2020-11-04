@@ -1,0 +1,11 @@
+<%- include('layout'); -%>
+<h1> <% title %></h1>
+<ul>
+    <% genre_list.forEach(genre => { %>
+        <li>
+            <p><a href="<%= genre.url %>"><%= genre.name %></a></p>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>

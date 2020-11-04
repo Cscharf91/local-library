@@ -1,0 +1,33 @@
+<%- include('layout'); -%>
+<h1><% book.title %></h1>
+<p><strong>Author:</strong> <%= book.author.name %></p>
+<p><strong>Summary:</strong> <%= book.summary %></p>
+<p><strong>ISBN:</strong> <%= book.isbn %></p>
+<p><strong>Genres:</strong></p>
+<% book.genre.forEach(genre => { %>
+  <a href="<%= genre %>"><%= genre.name %></a>
+<% }) %>
+<h4>Copies</h4>
+<% if (book_instances.length > 0) { %>
+    <ul>
+        <% book_instances.forEach(instance => { %>
+            <li>
+                <p><%= instance.imprint %></p>
+                <% if (instance.status == 'Available') { %>
+                    <span class="text-success"><%= instance.status %></span>
+                <% } else if (instance.status == 'Maintenance') { %>
+                    <span class="text-danger"><%= instance.status %></span>
+                <% } else { %>
+                    <span class="text-warning"><%= instance.status %></span>
+                <% } %>
+                <% if (instance.status != 'Available') { %>
+                    <span>Due: <%= instance.due_back_formatted %></span>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p>This book is out of stock</p>
+<% } %>
+</body>
+</html>

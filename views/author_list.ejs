@@ -1,0 +1,13 @@
+<%- include('layout'); -%>
+<h1> <% title %></h1>
+<ul>
+    <% author_list.forEach(author => { %>
+        <li>
+            <p><a href="<%= author.url %>"><%= author.name %></a></p>
+            <p>Born: <%= author.date_of_birth %></p>
+            <p>Death: <%= author.date_of_death %></p>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>
